@@ -19,7 +19,6 @@ async function getProjects() {
     `)
     .eq('status', 'published')
     .order('published_at', { ascending: false })
-    .limit(9)
   
   if (error) {
     console.error('Error fetching projects:', error)
@@ -29,15 +28,15 @@ async function getProjects() {
   return projects
 }
 
-export default async function HomePage() {
+export default async function ProjectsPage() {
   const projects = await getProjects()
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">Architectural Engineering Wonders</h1>
-        <p className="text-xl text-gray-600">
-          Exploring remarkable projects from around the world
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold mb-4">All Projects</h1>
+        <p className="text-gray-600">
+          Browse our complete collection of architectural engineering projects
         </p>
       </div>
 
@@ -107,15 +106,6 @@ export default async function HomePage() {
           ))}
         </div>
       )}
-
-      <div className="mt-12 text-center">
-        <Link
-          href="/projects"
-          className="inline-flex items-center px-6 py-3 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
-        >
-          View All Projects
-        </Link>
-      </div>
     </div>
   )
 }
